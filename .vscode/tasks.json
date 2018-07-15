@@ -1,0 +1,98 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+
+    // TODO https://stackoverflow.com/a/30269450
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "meson-init",
+            "group": "none",
+            "type": "shell",
+            "command": "meson",
+            "args": [
+                "build",
+                "--buildtype",
+                "debug"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "command": "ninja",
+            "args": [],
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": [
+                    "relative"
+                ]
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "clean",
+            "group": "none",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "command": "ninja",
+            "args": ["-t", "clean"],
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": [
+                    "relative"
+                ]
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared"
+            }
+        },
+        {
+            "label": "compile_cpp",
+            "group": "build",
+            "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/build"
+            },
+            "command": "ninja",
+            "args":[
+                "../${relativeFile}^"
+            ],
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": [
+                    "relative"
+                ]
+            },
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared"
+            },
+        }
+    ]
+}

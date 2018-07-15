@@ -1,0 +1,9 @@
+// Should be in settings https://github.com/Microsoft/vscode/issues/4504
+[
+    {
+        "key": "ctrl+alt+b",
+        "command": "workbench.action.tasks.runTask",
+        "args": "compile_cpp",
+        "when": "editorTextFocus && editorLangId == 'cpp'"
+    }
+]
